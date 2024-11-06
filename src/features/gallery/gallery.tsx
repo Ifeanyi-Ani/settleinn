@@ -9,6 +9,7 @@ export const Gallery = () => {
     alt: string;
   } | null>(null);
   const [loadedImages, setLoadedImages] = useState<Record<string, boolean>>({});
+  console.log(selectedImage);
 
   const gridClasses = [
     "col-[1/span_2] row-[1/span_2]",
@@ -85,11 +86,11 @@ export const Gallery = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-90 p-4"
+      className="fixed inset-0 z-50 -top-10 flex items-center justify-center bg-primary/20 p-4"
       onClick={onClose}
     >
       <motion.div
-        className="relative max-w-7xl max-h-[90vh] w-full"
+        className="relative container m-auto max-h-[90vh] w-full overflow-hidden"
         initial={{ scale: 0.9 }}
         animate={{ scale: 1 }}
         exit={{ scale: 0.9 }}
@@ -125,6 +126,7 @@ export const Gallery = () => {
             key={index}
             className={`${gridClasses[index]} overflow-hidden rounded-lg relative cursor-pointer group`}
             variants={itemVariants}
+            onClick={() => setSelectedImage(image)}
           >
             {!loadedImages[image.src] && <LoadingSpinner />}
             <motion.img
@@ -134,7 +136,6 @@ export const Gallery = () => {
                 loadedImages[image.src] ? "opacity-100" : "opacity-0"
               }`}
               onLoad={() => handleImageLoad(image.src)}
-              onClick={() => setSelectedImage(image)}
             />
             <motion.div
               className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"
