@@ -1,4 +1,3 @@
-import { useState, useEffect, FormEvent } from "react";
 import {
   Carousel,
   CarouselContent,
@@ -6,35 +5,12 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-  DialogFooter,
-} from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { sliderItem } from "@/constant";
 
 export const HeroSlider = () => {
-  const [showModal, setShowModal] = useState(false);
-  const [email, setEmail] = useState("");
-
-  useEffect(() => {
-    setShowModal(true);
-  }, []);
-
-  const handleSubscribe = (e: FormEvent) => {
-    e.preventDefault();
-    console.log("Subscribing email:", email);
-    setShowModal(false);
-  };
-
   return (
-    <>
+    <section id="home">
       <div className="relative w-full">
         <Carousel
           className="w-full"
@@ -78,44 +54,6 @@ export const HeroSlider = () => {
           </div>
         </Carousel>
       </div>
-
-      <Dialog open={showModal} onOpenChange={setShowModal}>
-        <DialogContent className="sm:max-w-md">
-          <DialogHeader>
-            <DialogTitle className="text-xl font-bold">
-              Subscribe to Our Newsletter
-            </DialogTitle>
-            <DialogDescription>
-              Get the latest updates and exclusive offers directly in your
-              inbox.
-            </DialogDescription>
-          </DialogHeader>
-          <form onSubmit={handleSubscribe} className="space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
-              <Input
-                id="email"
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter your email"
-                required
-                className="w-full"
-              />
-            </div>
-            <DialogFooter className="sm:justify-between gap-2">
-              <Button
-                type="button"
-                variant="outline"
-                onClick={() => setShowModal(false)}
-              >
-                Cancel
-              </Button>
-              <Button type="submit">Subscribe</Button>
-            </DialogFooter>
-          </form>
-        </DialogContent>
-      </Dialog>
-    </>
+    </section>
   );
 };

@@ -1,3 +1,4 @@
+import { SubscriptionModal } from "./components/subscription-modal";
 import { Button } from "./components/ui/button";
 import { About } from "./features/about/about";
 import { AppFooter } from "./features/app-footer/app-footer";
@@ -18,6 +19,7 @@ function App() {
       </main>
       <AppFooter />
 
+      <SubscriptionModal />
       <Button size="lg" className="fixed bottom-4 right-4">
         Book Now
       </Button>

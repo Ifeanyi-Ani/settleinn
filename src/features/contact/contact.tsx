@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -12,6 +13,9 @@ import { Textarea } from "@/components/ui/textarea";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import emailjs from "@emailjs/browser";
+import { useToast } from "@/hooks/use-toast";
+import { Loader } from "lucide-react";
 
 const contactSchema = z.object({
   firstname: z.string().min(3, "First name must be at least 3 characters"),
@@ -25,6 +29,9 @@ const contactSchema = z.object({
 type FormValidation = z.infer<typeof contactSchema>;
 
 export const Contact = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
+
   const form = useForm<FormValidation>({
     resolver: zodResolver(contactSchema),
     defaultValues: {
@@ -37,8 +44,42 @@ export const Contact = () => {
     },
   });
 
-  const onSubmit = (data: FormValidation) => {
-    console.log(data);
+  const onSubmit = async (data: FormValidation) => {
+    try {
+      setIsSubmitting(true);
+
+      const templateParams = {
+        from_name: `${data.firstname} ${data.lastname}`,
+        from_email: data.email,
+        to_name: "Settleinn Ltd",
+        phone: data.phone || "Not provided",
+        address: data.address || "Not provided",
+        message: data.message || "No message provided",
+      };
+
+      const response = await emailjs.send(
+        import.meta.env.VITE_CONTACT_SERVICE,
+        import.meta.env.VITE_CONTACT_TEMPLATE,
+        templateParams,
+        import.meta.env.VITE_PUBLIC_KEY,
+      );
+      if (response.status === 200) {
+        toast({
+          title: "Success!",
+          description: "Your message has been sent successfully.",
+        });
+        form.reset();
+      }
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again later.",
+        variant: "destructive",
+      });
+      console.error("EmailJS Error:", error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -168,8 +209,15 @@ export const Contact = () => {
                   type="submit"
                   className="w-full md:w-auto min-w-[200px]"
                   size="lg"
+                  disabled={isSubmitting}
                 >
-                  Submit
+                  {isSubmitting ? (
+                    <>
+                      <Loader size={20} className="animate-spin" /> Sending...
+                    </>
+                  ) : (
+                    "Submit"
+                  )}
                 </Button>
               </div>
             </form>
