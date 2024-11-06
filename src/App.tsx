@@ -1,5 +1,4 @@
 import { SubscriptionModal } from "./components/subscription-modal";
-import { Button } from "./components/ui/button";
 import { About } from "./features/about/about";
 import { AppFooter } from "./features/app-footer/app-footer";
 import { AppTopBar } from "./features/app-top-bar/app-top-bar";
