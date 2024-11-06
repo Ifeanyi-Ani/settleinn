@@ -27,3 +27,18 @@ export const navLinks = [
   { href: "#about", label: "About" },
   { href: "#contact", label: "Contact" },
 ];
+
+export const images = [
+  { src: "/assets/img1.webp", alt: "house-1" },
+  { src: "/assets/img2.webp", alt: "house-2" },
+  { src: "/assets/img3.webp", alt: "house-3" },
+  { src: "/assets/img1.webp", alt: "house-4" },
+  { src: "/assets/img2.webp", alt: "house-5" },
+  { src: "/assets/img3.webp", alt: "house-6" },
+  { src: "/assets/img2.webp", alt: "house-7" },
+  { src: "/assets/img6.jpg", alt: "house-8" },
+  { src: "/assets/img8.jpg", alt: "house-9" },
+  { src: "/assets/img8.jpg", alt: "house-10" },
+  { src: "/assets/img7.jpg", alt: "house-11" },
+  { src: "/assets/img4.webp", alt: "house-12" },
+];
