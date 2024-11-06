@@ -37,12 +37,13 @@ export const HeroSlider = () => {
                         <p className="text-sm sm:text-base md:text-lg lg:text-xl mb-6">
                           {item.description}
                         </p>
-                        <Button
-                          size="lg"
-                          className="bg-white text-black hover:bg-gray-200"
+                        <a
+                          href="https://wa.me/17059883937"
+                          className="px-2.5 py-2 inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-secondary text-primary shadow hover:bg-primary/90 hover:text-primary-foreground"
+                          target="_blank"
                         >
                           Book Now
-                        </Button>
+                        </a>
                       </div>
                     </div>
                   </div>
