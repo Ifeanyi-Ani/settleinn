@@ -17,13 +17,9 @@ export const Gallery = () => {
     "row-[1/span_2] col-[6/8]",
     "col-[8/-1] row-[1/span_1]",
     "row-[3/span_1] col-[1/span_2]",
-    "row-[4/span_2] col-[1/span_4]",
-    "col-[5/6] row-[4/5]",
+    "row-[4/span_1] col-[1/span_5]",
     "row-[3/span_2] col-[6/-1]",
     "col-[8/-1] row-[2/3]",
-    "col-[1/span_5] row-[6/span_2]",
-    "col-[5/-1] row-[5/span_1]",
-    "col-[6/-1] row-[6/span_2]",
   ];
 
   const containerVariants = {
@@ -114,7 +110,7 @@ export const Gallery = () => {
   return (
     <>
       <motion.section
-        className="grid h-full grid-cols-8 grid-rows-[repeat(7_5vw)] gap-1.5 p-1.5"
+        className="grid h-full grid-cols-8 grid-rows-[repeat(4_5vw)] gap-1.5 p-1.5"
         id="gallery"
         variants={containerVariants}
         initial="hidden"
