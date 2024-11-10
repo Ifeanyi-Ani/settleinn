@@ -37,8 +37,66 @@ export const images = [
   { src: "/assets/img3.webp", alt: "house-6" },
   { src: "/assets/img2.webp", alt: "house-7" },
   { src: "/assets/img6.jpg", alt: "house-8" },
-  { src: "/assets/img8.jpg", alt: "house-9" },
-  { src: "/assets/img8.jpg", alt: "house-10" },
-  { src: "/assets/img7.jpg", alt: "house-11" },
-  { src: "/assets/img4.webp", alt: "house-12" },
+];
+
+export const plans = [
+  {
+    name: "Essential Package",
+    price: "$250",
+    description:
+      "Ideal for those seeking minimal assistance with essential settling-in tasks.",
+    features: [
+      "One-time arrival pickup",
+      "Basic housing search support",
+      "Half-day orientation tour",
+      "Basic utilities setup support",
+      // "Bank account assistance",
+      "Digital welcome kit",
+      "2-week customer support",
+    ],
+  },
+  {
+    name: "Standard Package",
+    price: "$500",
+    description:
+      "Perfect for movers who need additional support and flexibility.",
+    features: [
+      "Arrival pickup + one local trip",
+      "Full housing search support",
+      "Full-day orientation tour",
+      "Comprehensive setup support",
+      // "In-depth banking support",
+      "Detailed digital welcome kit",
+      "1-month customer support",
+    ],
+  },
+  {
+    name: "Premium Package",
+    price: "$800",
+    description:
+      "For newcomers seeking a seamless and fully-supported transition.",
+    features: [
+      "Comprehensive transportation (3 trips)",
+      "Personalized housing support",
+      "Two-day orientation tour",
+      "Full setup services",
+      // "Premium banking support",
+      "Comprehensive welcome kit",
+      "2-month dedicated support",
+    ],
+  },
+  {
+    name: "Ultimate VIP Package",
+    price: "$1,200",
+    description: "Luxury-level, fully managed relocation experience.",
+    features: [
+      "Full transportation support (4 trips)",
+      "VIP accommodation assistance",
+      "Custom two-day tour experience",
+      "Complete setup services",
+      // "Personalized banking setup",
+      "Premium resource kit",
+      "3-month 24/7 VIP support",
+    ],
+  },
 ];
