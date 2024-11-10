@@ -1,10 +1,10 @@
 import { SubscriptionModal } from "./components/subscription-modal";
-import { About } from "./features/about/about";
 import { AppFooter } from "./features/app-footer/app-footer";
 import { AppTopBar } from "./features/app-top-bar/app-top-bar";
 import { Contact } from "./features/contact/contact";
 import { Gallery } from "./features/gallery/gallery";
 import { HeroSlider } from "./features/hero-slider/hero-slider";
+import { PricingPlan } from "./features/pricing-plan/pricing-plan";
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
       <HeroSlider />
       <main className="container mx-auto space-y-8">
         <Gallery />
-        <About />
+        <PricingPlan />
         <Contact />
       </main>
       <AppFooter />
