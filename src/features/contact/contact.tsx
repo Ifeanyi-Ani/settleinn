@@ -58,7 +58,7 @@ export const Contact = () => {
       };
 
       const response = await emailjs.send(
-        import.meta.env.VITE_CONTACT_SERVICE,
+        import.meta.env.VITE_SERVICE_ID,
         import.meta.env.VITE_CONTACT_TEMPLATE,
         templateParams,
         import.meta.env.VITE_PUBLIC_KEY,

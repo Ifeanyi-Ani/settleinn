@@ -52,7 +52,7 @@ export const SubscriptionModal = () => {
       };
 
       const response = await emailjs.send(
-        import.meta.env.VITE_CONTACT_SERVICE,
+        import.meta.env.VITE_SERVICE_ID,
         import.meta.env.VITE_NEWS_TEMPLATE,
         templateParams,
         import.meta.env.VITE_PUBLIC_KEY,
@@ -60,7 +60,8 @@ export const SubscriptionModal = () => {
       if (response.status === 200) {
         toast({
           title: "Success!",
-          description: "Your message has been sent successfully.",
+          description:
+            "Your have successfully subscribe to Settleinn news letter.",
         });
         form.reset();
       }
