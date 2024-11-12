@@ -1,7 +1,5 @@
-"use client";
-
-import { useEffect, useRef, useState } from "react";
-import { Check } from "lucide-react";
+import { useRef, useState } from "react";
+import { Check, Loader } from "lucide-react";
 import { motion } from "framer-motion";
 import TawkMessengerReact from "@tawk.to/tawk-messenger-react";
 
@@ -21,7 +19,7 @@ const MotionCard = motion(Card);
 const MotionButton = motion(Button);
 
 export const PricingPlan = () => {
-  const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
   const tawkMessengerRef = useRef<TawkMessengerReact>(null);
 
   const container = {
@@ -56,30 +54,39 @@ export const PricingPlan = () => {
     },
   };
 
-  const handleGetStarted = (planName: string) => {
-    tawkMessengerRef.current?.toggle();
-    setSelectedPlan(planName);
-  };
+  const handleGetStarted = async (planName: string) => {
+    setIsLoading(true);
+    try {
+      await new Promise<void>((resolve, reject) => {
+        tawkMessengerRef.current?.setAttributes(
+          {
+            Plan: planName,
+            Interest: `Interested in ${planName} plan`,
+          },
+          (error: any) => {
+            if (error) {
+              reject(error);
+            } else {
+              resolve();
+            }
+          },
+        );
+      });
 
-  useEffect(() => {
-    if (selectedPlan && tawkMessengerRef.current) {
-      tawkMessengerRef.current.setAttributes(
-        {
-          Plan: selectedPlan,
-          Interest: `Interested in ${selectedPlan} plan`,
-        },
-        (error) => {
-          if (!error) {
-            tawkMessengerRef.current?.maximize();
-          }
-        },
-      );
+      tawkMessengerRef.current?.toggle();
+    } catch (error) {
+      console.error("Error setting up chat:", error);
+    } finally {
+      setIsLoading(false);
     }
-  }, [selectedPlan]);
+  };
 
   return (
     <>
-      <section className="w-full mx-auto flex flex-col items-center" id="about">
+      <section
+        className="w-full mx-auto flex flex-col px-2 items-center"
+        id="about"
+      >
         <motion.h1
           className="font-bold text-2xl md:text-3xl lg:text-4xl flex justify-center md:text-left"
           initial={{ opacity: 0, y: -20 }}
@@ -174,8 +181,10 @@ export const PricingPlan = () => {
                   whileTap={{ scale: 0.95 }}
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}
                   onClick={() => handleGetStarted(plan.name)}
+                  disabled={isLoading}
                 >
-                  Chat with Us
+                  {isLoading && <Loader size={20} className="animate-spin" />}
+                  {isLoading ? "Loading..." : "Chat with Us"}
                 </MotionButton>
               </CardFooter>
             </MotionCard>
