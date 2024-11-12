@@ -170,6 +170,7 @@ export const AppTopBar = () => {
               <div className="flex flex-col space-y-3">
                 {navLinks.map((link) => (
                   <motion.div
+                    key={link.href}
                     className="relative"
                     variants={{
                       hidden: { opacity: 0, y: -20 },
