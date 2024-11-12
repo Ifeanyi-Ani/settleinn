@@ -73,7 +73,7 @@ export const PricingPlan = () => {
         );
       });
 
-      tawkMessengerRef.current?.toggle();
+      tawkMessengerRef.current?.maximize();
     } catch (error) {
       console.error("Error setting up chat:", error);
     } finally {
