@@ -83,8 +83,8 @@ export const Contact = () => {
   };
 
   return (
-    <section id="contact" className="w-full px-4 py-12 md:py-16 bg-background">
-      <div className="max-w-3xl mx-auto">
+    <section id="contact" className="w-full px-2  md:py-16 md:bg-background">
+      <div className="mx-auto">
         <div className="text-center mb-8 md:mb-12">
           <h1 className="font-bold text-3xl md:text-4xl lg:text-5xl mb-4">
             Contact us today!
@@ -95,7 +95,7 @@ export const Contact = () => {
           </p>
         </div>
 
-        <div className="bg-card rounded-lg shadow-lg p-6 md:p-8">
+        <div className="md:bg-card md:rounded-lg md:shadow-lg p-2 md:p-8">
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
