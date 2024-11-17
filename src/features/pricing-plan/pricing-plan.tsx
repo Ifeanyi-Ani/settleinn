@@ -139,8 +139,9 @@ export const PricingPlan = () => {
               </CardHeader>
 
               <CardContent className="flex-grow p-2 md:p-4">
+                <CardDescription>Features:</CardDescription>
                 <motion.ul
-                  className="space-y-3"
+                  className="space-y-1"
                   initial="hidden"
                   animate="show"
                   variants={{
@@ -169,6 +170,42 @@ export const PricingPlan = () => {
                         <Check className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
                       </motion.div>
                       <span className="text-sm">{feature}</span>
+                    </motion.li>
+                  ))}
+                </motion.ul>
+                <CardDescription className="mt-4">
+                  Pricing Options:
+                </CardDescription>
+                <motion.ul
+                  className="space-y-1"
+                  initial="hidden"
+                  animate="show"
+                  variants={{
+                    show: {
+                      transition: {
+                        staggerChildren: 0.1,
+                        delayChildren: 0.3 + index * 0.1,
+                      },
+                    },
+                  }}
+                >
+                  {plan.PricingOpt.map((option, optionIndex) => (
+                    <motion.li
+                      key={optionIndex}
+                      className="flex items-start"
+                      variants={featureItem}
+                    >
+                      <motion.div
+                        whileHover={{ scale: 1.2 }}
+                        transition={{
+                          type: "spring",
+                          stiffness: 400,
+                          damping: 10,
+                        }}
+                      >
+                        <Check className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                      </motion.div>
+                      <span className="text-sm">{option}</span>
                     </motion.li>
                   ))}
                 </motion.ul>
