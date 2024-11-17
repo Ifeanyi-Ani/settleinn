@@ -1,12 +1,12 @@
-import House1 from "@/assets/img9.jpg";
+import House1 from "@/assets/custom-01.jpeg";
 import House2 from "@/assets/img10.jpg";
 import House3 from "@/assets/img11.jpg";
 
 export const sliderItem = [
   {
     image: House1,
-    title: "4 Bedroom flat",
-    description: "this is a 4 bedroom flat",
+    title: "",
+    description: "",
   },
   {
     image: House2,
@@ -41,62 +41,74 @@ export const images = [
 
 export const plans = [
   {
-    name: "Essential Package",
+    name: "Basic Service ",
+    price: "$150",
+    description:
+      "Ideal for those seeking basic arrival support and a smooth start.",
+    features: [
+      "Local Pick Up: Airport or bus terminal pick up for easy arrival.",
+      "Basic Housing Search Support: Guidance to help find housing options.",
+      "Settling-In Support: One full day of support to help get you situated and comfortable.",
+    ],
+    PricingOpt: [
+      "1 Person: $150",
+      "2 Persons: $225",
+      "3 Persons: $300",
+      "Family (Up to 5): $400",
+    ],
+  },
+  {
+    name: "Essential Service",
     price: "$250",
     description:
-      "Ideal for those seeking minimal assistance with essential settling-in tasks.",
+      "Best for those wanting more extensive support and reliable housing options.",
     features: [
-      "One-time arrival pickup",
-      "Basic housing search support",
-      "Half-day orientation tour",
-      "Basic utilities setup support",
-      // "Bank account assistance",
-      "Digital welcome kit",
-      "2-week customer support",
+      "Intercity Pick Up: Convenient transportation from nearby cities.",
+      "Essential Housing Search Support: Targeted assistance to locate suitable housing options.",
+      "Extended Settling-In Support: Two days of guided support for a smooth transition.",
+    ],
+    PricingOpt: [
+      "1 Person: $250",
+      "2 Persons: $375",
+      "3 Persons: $500",
+      "Family (Up to 5): $650",
     ],
   },
   {
-    name: "Standard Package",
-    price: "$500",
+    name: "Premium Service",
+    price: "$400",
     description:
-      "Perfect for movers who need additional support and flexibility.",
+      "Perfect for clients seeking comprehensive assistance with high-quality housing and transport.",
     features: [
-      "Arrival pickup + one local trip",
-      "Full housing search support",
-      "Full-day orientation tour",
-      "Comprehensive setup support",
-      // "In-depth banking support",
-      "Detailed digital welcome kit",
-      "1-month customer support",
+      "Comprehensive Transportation: Intercity pick up and drop off, plus local pick up and drop off.",
+      "Premium House Search Support: Advanced assistance to find high-quality housing.",
+      "3-Day Settling-In Support: Ongoing assistance to help you establish yourself comfortably",
+    ],
+    PricingOpt: [
+      "1 Person: $400",
+      "2 Persons: $600",
+      "3 Persons: $800",
+      "Family (Up to 5): $1,000",
     ],
   },
   {
-    name: "Premium Package",
-    price: "$800",
+    name: "Ultimate (VIP) Service",
+    price: "$1,000",
     description:
-      "For newcomers seeking a seamless and fully-supported transition.",
+      "Designed for those who want a complete, fully-managed transition with premium perks.",
     features: [
-      "Comprehensive transportation (3 trips)",
-      "Personalized housing support",
-      "Two-day orientation tour",
-      "Full setup services",
-      // "Premium banking support",
-      "Comprehensive welcome kit",
-      "2-month dedicated support",
+      "Full-Service Transportation: Choice of intercity pick up or drop off, plus local pick up and drop off.",
+      "3-Day Hotel Stay: Comfortable accommodation to start your stay in the city.",
+      "City Tour: A personalized day tour of beautiful and important local sites.",
+      "Settle Inn Support Kit: Essentials to make your transition easier.",
+      "1-Week Settling-In Support: Full support for one week to ensure a seamless experience.",
     ],
-  },
-  {
-    name: "Ultimate VIP Package",
-    price: "$1,200",
-    description: "Luxury-level, fully managed relocation experience.",
-    features: [
-      "Full transportation support (4 trips)",
-      "VIP accommodation assistance",
-      "Custom two-day tour experience",
-      "Complete setup services",
-      // "Personalized banking setup",
-      "Premium resource kit",
-      "3-month 24/7 VIP support",
+
+    PricingOpt: [
+      "1 Person: $1,000",
+      "2 Persons: $1,500",
+      "3 Persons: $2,000",
+      "Family (Up to 5): $2,500",
     ],
   },
 ];
