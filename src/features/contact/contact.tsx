@@ -1,4 +1,17 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
+import { useForm } from "react-hook-form";
+import * as z from "zod";
+import { Loader } from "lucide-react";
+import countryList from "react-select-country-list";
+import { zodResolver } from "@hookform/resolvers/zod";
+
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -10,12 +23,8 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { useForm } from "react-hook-form";
-import * as z from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
 import emailjs from "@emailjs/browser";
 import { useToast } from "@/hooks/use-toast";
-import { Loader } from "lucide-react";
 
 const contactSchema = z.object({
   firstname: z.string().min(3, "First name must be at least 3 characters"),
@@ -24,6 +33,7 @@ const contactSchema = z.object({
   phone: z.string().optional(),
   address: z.string().optional(),
   message: z.string().optional(),
+  location: z.string().min(1, "Please select a country"),
 });
 
 type FormValidation = z.infer<typeof contactSchema>;
@@ -31,6 +41,7 @@ type FormValidation = z.infer<typeof contactSchema>;
 export const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
+  const countries = useMemo(() => countryList().getData(), []);
 
   const form = useForm<FormValidation>({
     resolver: zodResolver(contactSchema),
@@ -41,6 +52,7 @@ export const Contact = () => {
       phone: "",
       address: "",
       message: "",
+      location: "",
     },
   });
 
@@ -55,6 +67,7 @@ export const Contact = () => {
         phone: data.phone || "Not provided",
         address: data.address || "Not provided",
         message: data.message || "No message provided",
+        location: data.location || "No location provided",
       };
 
       const response = await emailjs.send(
@@ -181,6 +194,33 @@ export const Contact = () => {
                         className="h-11"
                       />
                     </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="location"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-base">Country*</FormLabel>
+                    <Select
+                      onValueChange={field.onChange}
+                      defaultValue={field.value}
+                    >
+                      <FormControl>
+                        <SelectTrigger className="h-11">
+                          <SelectValue placeholder="Select a country" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        {countries.map((country) => (
+                          <SelectItem key={country.value} value={country.value}>
+                            {country.label}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
                     <FormMessage />
                   </FormItem>
                 )}
